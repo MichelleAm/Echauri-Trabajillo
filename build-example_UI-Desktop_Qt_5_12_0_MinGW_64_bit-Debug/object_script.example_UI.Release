@@ -1,3 +1,5 @@
+release/ajustemensaje.o
+release/aristavertices.o
 release/main.o
 release/mainwindow.o
 release/user.o
@@ -8,6 +10,7 @@ release/conversacion.o
 release/colormensaje.o
 release/ventanadeconversaciondialog.o
 release/grafodialog.o
+release/moc_ajustemensaje.o
 release/moc_mainwindow.o
 release/moc_logindialog.o
 release/moc_admin.o

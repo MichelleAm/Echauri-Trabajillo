@@ -54,6 +54,7 @@ private:
     void grafoCompleto();
 
     void aplicarPrim();
+
     void aplicarKruskal();
 
     void agregarAlGrafo(AristaVertices &aristaVertice);

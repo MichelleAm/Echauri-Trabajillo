@@ -77,38 +77,44 @@ void GrafoDialog::grafoCompleto()
 
 void GrafoDialog::aplicarPrim()
 {
-    std::priority_queue<AristaVertices, std::vector<AristaVertices>, std::greater<AristaVertices>> colaPrioridad;
+    std::priority_queue<AristaVertices> colaPrioridad;
+    //std::priority_queue<AristaVertices, std::vector<AristaVertices>, std::mayor<AristaVertices>> colaPrioridad;
+
     QList<QString> listaVisitados;
 
     QString origen, destino;
     unsigned long long peso;
-
+///Se obtienen la conversación del origen con sus contactos
     User conversacion = regresarMensajesUsuario(user->getUserName());
     origen = user->getUserName();
-
+/// es para sacar los mensajes con los contactos
     for (unsigned i = 0; i < conversacion.getContactos().size(); i++)
     {
         destino = conversacion.getContactos()[i].getUserName();
+        ///Casteo
         peso = static_cast<unsigned long long>(conversacion.getContactos()[i].getConversacion().size());
-
+///Se valida que no haya conversación
         (peso != 0) ? colaPrioridad.push(*(new AristaVertices(origen, destino, peso))) : void();
     }
 
 //    colaPrioridad.push(*(new AristaVertices("origen", "destino", 1)));
 
     grafo.clear();
-
+///Es para obtener los datos en la cola de prioridad
     AristaVertices aristaActual;
 
+///Si la cola no está vacía se agrega el usuario en uso como
+/// de sus contactos
     if(!colaPrioridad.empty())
-    {
+    {//ES el primero de la cola de prioridad
         aristaActual = colaPrioridad.top();
         listaVisitados.append(aristaActual.getOrigen());
         listaVisitados.append(aristaActual.getDestino());
         agregarAlGrafo(aristaActual);
 
         colaPrioridad.pop();
-
+///se utiliza para devolver los mensajes que tiene el usuario contacto y se agregan a la cola de prioridad
+/// que tienen un peso diferente de 0
         conversacion = regresarMensajesUsuario(aristaActual.getDestino());
 
         for (unsigned i = 0; i < conversacion.getContactos().size(); i++)
@@ -120,25 +126,26 @@ void GrafoDialog::aplicarPrim()
             (peso != 0) ? colaPrioridad.push(*(new AristaVertices(origen, destino, peso))) : void();
         }
     }
-
+//// si la cola no está vacía se agregan los contactos que no han sido añadidos
+/// al grafo
     while (!colaPrioridad.empty()) {
-
+///es el primer elemento de la cola de prioridad
         aristaActual = colaPrioridad.top();
-
+//si no está visitado se obtienen los contactos
         if(!listaVisitados.contains(aristaActual.getDestino()))
         {
             conversacion = regresarMensajesUsuario(aristaActual.getDestino());
 
+///Se recorren los contactos para sacar el peso de los mensajes
             for (unsigned i = 0; i < conversacion.getContactos().size(); i++)
             {
-
                 origen = aristaActual.getDestino();
                 destino = conversacion.getContactos()[i].getUserName();
                 peso = static_cast<unsigned long long>(conversacion.getContactos()[i].getConversacion().size());
-
+///se agrega a la cola de prioridad
                 (peso != 0) ? colaPrioridad.push(*(new AristaVertices(origen, destino, peso))) : void();
             }
-
+///se agrega a la lista de visitados
             listaVisitados.append(aristaActual.getDestino());
             agregarAlGrafo(aristaActual);
         }
@@ -148,13 +155,13 @@ void GrafoDialog::aplicarPrim()
 
 void GrafoDialog::aplicarKruskal()
 {
-    std::priority_queue<AristaVertices, std::vector<AristaVertices>, std::greater<AristaVertices>> colaPrioridad;
+    std::priority_queue<AristaVertices> colaPrioridad;
     QList<QString> listaVisitados;
     QList<QList<QString>> listaConectados;
 
     QString origen, destino;
     unsigned long long peso;
-
+////
     for(unsigned int i = 0; i < usuarioVector.size(); i++)
     {
         origen = usuarioVector[i].getUserName();
@@ -255,7 +262,7 @@ void GrafoDialog::agregarAlGrafo(AristaVertices &aristaVertice)
     arista.insert(aristaVertice.getDestino(), aristaVertice.getPeso());
     grafo.insert(aristaVertice.getOrigen(), arista);
 
-    //Agregar de regreso
+   //Agregar de regreso
     arista.clear();
     arista.insert(aristaVertice.getOrigen(), aristaVertice.getPeso());
     grafo.insert(aristaVertice.getDestino(), arista);
@@ -327,15 +334,16 @@ void GrafoDialog::on_btnMostrar_clicked()
 {
     if(ui->rbtnPrim->isChecked())
     {
+        //qDebug("Entróóóóóoóóóó");
         aplicarPrim();
     }
     else if(ui->rbtnGrafo->isChecked())
     {
         grafoCompleto();
     }
-    else if (ui->rbtnKruskal->isChecked())
+    else if (false)
     {
-        aplicarKruskal();
+//       aplicarKruskal();
     }
 
     vista();

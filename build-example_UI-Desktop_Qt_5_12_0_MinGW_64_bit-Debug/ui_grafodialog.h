@@ -15,6 +15,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QTableWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +26,9 @@ public:
     QLineEdit *grafolineEdit;
     QPushButton *visualizarPushButton;
     QTableWidget *grafoTableWidget;
+    QPushButton *btnMostrar;
+    QRadioButton *rbtnPrim;
+    QRadioButton *rbtnGrafo;
 
     void setupUi(QDialog *GrafoDialog)
     {
@@ -38,7 +42,7 @@ public:
         grafolineEdit->setAlignment(Qt::AlignCenter);
         visualizarPushButton = new QPushButton(GrafoDialog);
         visualizarPushButton->setObjectName(QString::fromUtf8("visualizarPushButton"));
-        visualizarPushButton->setGeometry(QRect(160, 40, 101, 41));
+        visualizarPushButton->setGeometry(QRect(20, 40, 101, 41));
         grafoTableWidget = new QTableWidget(GrafoDialog);
         if (grafoTableWidget->columnCount() < 3)
             grafoTableWidget->setColumnCount(3);
@@ -50,6 +54,15 @@ public:
         grafoTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
         grafoTableWidget->setObjectName(QString::fromUtf8("grafoTableWidget"));
         grafoTableWidget->setGeometry(QRect(0, 100, 481, 201));
+        btnMostrar = new QPushButton(GrafoDialog);
+        btnMostrar->setObjectName(QString::fromUtf8("btnMostrar"));
+        btnMostrar->setGeometry(QRect(360, 40, 101, 41));
+        rbtnPrim = new QRadioButton(GrafoDialog);
+        rbtnPrim->setObjectName(QString::fromUtf8("rbtnPrim"));
+        rbtnPrim->setGeometry(QRect(150, 40, 82, 17));
+        rbtnGrafo = new QRadioButton(GrafoDialog);
+        rbtnGrafo->setObjectName(QString::fromUtf8("rbtnGrafo"));
+        rbtnGrafo->setGeometry(QRect(260, 40, 82, 17));
 
         retranslateUi(GrafoDialog);
 
@@ -67,6 +80,9 @@ public:
         ___qtablewidgetitem1->setText(QApplication::translate("GrafoDialog", "Usuario Final", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = grafoTableWidget->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QApplication::translate("GrafoDialog", "Peso", nullptr));
+        btnMostrar->setText(QApplication::translate("GrafoDialog", "Mostrar", nullptr));
+        rbtnPrim->setText(QApplication::translate("GrafoDialog", "Prim", nullptr));
+        rbtnGrafo->setText(QApplication::translate("GrafoDialog", "Grafo", nullptr));
     } // retranslateUi
 
 };

@@ -28,29 +28,30 @@ public:
     QTableWidget *conversaciontableWidget;
     QLineEdit *BusquedaMensajelineEdit;
     QPushButton *BuscarpushButton;
+    QPushButton *ConfiguracionesButton;
 
     void setupUi(QDialog *VentanadeConversacionDialog)
     {
         if (VentanadeConversacionDialog->objectName().isEmpty())
             VentanadeConversacionDialog->setObjectName(QString::fromUtf8("VentanadeConversacionDialog"));
-        VentanadeConversacionDialog->resize(463, 363);
+        VentanadeConversacionDialog->resize(484, 363);
         chatLineEdit = new QLineEdit(VentanadeConversacionDialog);
         chatLineEdit->setObjectName(QString::fromUtf8("chatLineEdit"));
         chatLineEdit->setEnabled(false);
-        chatLineEdit->setGeometry(QRect(10, 9, 441, 21));
+        chatLineEdit->setGeometry(QRect(10, 9, 461, 21));
         chatLineEdit->setLayoutDirection(Qt::LeftToRight);
         chatLineEdit->setStyleSheet(QString::fromUtf8("background-color: white; color: black"));
         chatLineEdit->setAlignment(Qt::AlignCenter);
         EnviarpushButton = new QPushButton(VentanadeConversacionDialog);
         EnviarpushButton->setObjectName(QString::fromUtf8("EnviarpushButton"));
-        EnviarpushButton->setGeometry(QRect(340, 320, 71, 31));
+        EnviarpushButton->setGeometry(QRect(320, 320, 71, 31));
         MensajelineEdit = new QLineEdit(VentanadeConversacionDialog);
         MensajelineEdit->setObjectName(QString::fromUtf8("MensajelineEdit"));
-        MensajelineEdit->setGeometry(QRect(30, 320, 291, 31));
+        MensajelineEdit->setGeometry(QRect(20, 320, 291, 31));
         conversaciontableWidget = new QTableWidget(VentanadeConversacionDialog);
         conversaciontableWidget->setObjectName(QString::fromUtf8("conversaciontableWidget"));
         conversaciontableWidget->setEnabled(true);
-        conversaciontableWidget->setGeometry(QRect(20, 70, 421, 241));
+        conversaciontableWidget->setGeometry(QRect(20, 70, 451, 241));
         conversaciontableWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         conversaciontableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         conversaciontableWidget->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
@@ -59,10 +60,13 @@ public:
         conversaciontableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
         BusquedaMensajelineEdit = new QLineEdit(VentanadeConversacionDialog);
         BusquedaMensajelineEdit->setObjectName(QString::fromUtf8("BusquedaMensajelineEdit"));
-        BusquedaMensajelineEdit->setGeometry(QRect(80, 40, 181, 21));
+        BusquedaMensajelineEdit->setGeometry(QRect(70, 40, 181, 21));
         BuscarpushButton = new QPushButton(VentanadeConversacionDialog);
         BuscarpushButton->setObjectName(QString::fromUtf8("BuscarpushButton"));
-        BuscarpushButton->setGeometry(QRect(290, 40, 75, 23));
+        BuscarpushButton->setGeometry(QRect(300, 40, 75, 23));
+        ConfiguracionesButton = new QPushButton(VentanadeConversacionDialog);
+        ConfiguracionesButton->setObjectName(QString::fromUtf8("ConfiguracionesButton"));
+        ConfiguracionesButton->setGeometry(QRect(400, 320, 71, 31));
 
         retranslateUi(VentanadeConversacionDialog);
 
@@ -77,6 +81,7 @@ public:
         MensajelineEdit->setPlaceholderText(QApplication::translate("VentanadeConversacionDialog", "Ingresa el mensaje que deseas enviar. ", nullptr));
         BusquedaMensajelineEdit->setPlaceholderText(QApplication::translate("VentanadeConversacionDialog", "Buscar Mensaje", nullptr));
         BuscarpushButton->setText(QApplication::translate("VentanadeConversacionDialog", "Buscar !", nullptr));
+        ConfiguracionesButton->setText(QApplication::translate("VentanadeConversacionDialog", "Ajustes", nullptr));
     } // retranslateUi
 
 };

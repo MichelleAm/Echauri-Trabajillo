@@ -86,8 +86,8 @@
   <widget class="QRadioButton" name="rbtnPrim">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>70</y>
+     <x>150</x>
+     <y>40</y>
      <width>82</width>
      <height>17</height>
     </rect>
@@ -107,19 +107,6 @@
    </property>
    <property name="text">
     <string>Grafo</string>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="rbtnKruskal">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>37</y>
-     <width>82</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Kruskal</string>
    </property>
   </widget>
  </widget>

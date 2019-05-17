@@ -1,3 +1,5 @@
+debug/ajustemensaje.o
+debug/aristavertices.o
 debug/main.o
 debug/mainwindow.o
 debug/user.o
@@ -8,6 +10,7 @@ debug/conversacion.o
 debug/colormensaje.o
 debug/ventanadeconversaciondialog.o
 debug/grafodialog.o
+debug/moc_ajustemensaje.o
 debug/moc_mainwindow.o
 debug/moc_logindialog.o
 debug/moc_admin.o
